@@ -1,0 +1,34 @@
+name: Simple Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      server:
+        type: choice
+        description: Select a server to deploy
+        options:
+          - 84.252.141.228
+          - 158.160.69.236
+          - mars.stage.okto.ru
+      build:
+        type: boolean
+        description: Build
+        default: true
+      deploy:
+        type: boolean
+        description: Deploy
+        default: true
+
+jobs:
+  print_logs:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Write some logs to a file
+      - name: log_step
+        run: echo "This is the first log entry"
+
+       # Step 2: Print the output from the first step
+      - name: Print Logs from Output
+        run: |
+          echo "Logs from Step 1: ${{ steps.log_step.outputs.log_output }}"
