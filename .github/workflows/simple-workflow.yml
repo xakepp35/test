@@ -34,12 +34,3 @@ jobs:
       - name: Print Logs from Output1
         run: |
            echo "Logs from Step 1: ${{ steps.write_logs.outputs.log_output }}"
-
-      - name: write_logs2
-        id: write_logs2
-        run: echo "This is the first log entry" >> $GITHUB_OUTPUT
-
-       # Step 2: Print the output from the first step
-      - name: Print Logs from Output1
-        run: |
-           echo "Logs from Step 2: ${{ GITHUB_OUTPUT }}"
